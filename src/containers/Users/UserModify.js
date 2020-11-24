@@ -15,10 +15,7 @@ const UserModify = (props) => {
     if(selUser && user.id !== selUser.id){
         setUser(selUser);
     }
-    
-return <UserForm user={user} onUserModify={props.onModifyUser}/>
-
-
+return <UserForm user={user} onUserModify={props.onModifyUser} />
 }
 
 const mapStateToProps = state => {
@@ -31,7 +28,5 @@ const mapDispatchToProps = dispatch => {
     return {
         onModifyUser:(data)=>dispatch({type:actionTypes.MODIFY_USER, userData:data})
     }
-
 }
-// export default UserModify;
 export default connect(mapStateToProps, mapDispatchToProps)(UserModify);

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import Card from "shared/components/UIElements/Card";
 import bs from 'assets/globalStyles/bootstrap.module.css';
 import styles from "components/Users/UserItem.module.css";
 import cx from 'classnames';
@@ -17,8 +16,15 @@ debugger;
 
         <div className={cx(styles.cardLeft, bs['col-12'], bs['col-sm-4'])}>
             <Link to={`/${props.user.id}/modify`}>
-                <div className={styles.profilePicDiv}>
-                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt={props.user.name} className={styles.profilePic}></img>
+                <div className={styles.profilePicDiv}>                
+                    {/* {props.user.profilePic?
+                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                     alt={props.user.name} className={styles.profilePic}></img>
+                    :  <h2 className={styles.profilePicName}>{props.user.name.split(" ").map((n)=>n[0]).join("")}</h2>
+                    } */}
+                    {props.user.id%2!==0?<img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                     alt={props.user.name} className={styles.profilePic}></img>
+                    :  <h2 className={styles.profilePicName}>{props.user.name.split(" ").map((n)=>n[0]).join("")}</h2>}
                 </div>
             </Link>
         </div>

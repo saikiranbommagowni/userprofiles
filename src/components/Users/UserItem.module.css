@@ -37,6 +37,7 @@
     border-radius: 50%;
     margin       : auto;
     top          : 25%;
+    background: #ffffff;
 }
 
 @media screen and (min-width: 576px) and (max-width:1199px) {
@@ -48,6 +49,12 @@
 
 .profilePic {
     width: inherit;
+}
+.profilePicName{
+    text-align: center;
+    position: relative;
+    top: 30%;
+    font-size: 3rem;
 }
 
 .cardRight {
@@ -65,7 +72,7 @@
 }
 
 .cardInfoText {
-    line-height: 0.5rem;
+    line-height: 1.2rem;
 }
 @media screen and (max-width:1199px) {
 .cardInfoText {

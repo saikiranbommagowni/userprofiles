@@ -1,9 +1,13 @@
 import './App.css';
 import bs from 'assets/globalStyles/bootstrap.module.css';
 import cx from 'classnames';
+
 import { connect } from 'react-redux';
 import * as actionTypes from 'store/actions';
 import { useEffect } from 'react';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 import {
   BrowserRouter as Router,
@@ -18,17 +22,19 @@ import NewUser from 'containers/Users/NewUser';
 
 function App(props) {
   useEffect(()=>{
-    // const url = 'https://my-json-server.typicode.com/saikiranbommagowni/jsonserver';
+    if(props.usersData && props.usersData.length===0){
     const url="https://jsonplaceholder.typicode.com/users";
     fetch(url).then(res=>res.json()).then(data=>props.onStoreUsers(data));
-},[]);
+    }
+});
 
   return (
     <Router>
       <main>
       <nav className={cx(bs['navbar'], bs['sticky-top'], bs['navbar-light'], bs['bg-light'], bs['justify-content-between'])}>
          <a className={cx(bs['navbar-brand'])} href="/">User Profiles</a>
-         <a className={cx(bs['nav-link'],bs['p-2'])} href="/newuser" >New User</a>
+         <a className={cx(bs['nav-link'],bs['p-2'])} href="/newuser" ><FontAwesomeIcon icon={faUserPlus}/> Add User</a>
+         
       </nav>
         <Switch>
           <Route path="/" exact>
@@ -38,7 +44,7 @@ function App(props) {
             <UserModify usersData={props.usersData}/>
           </Route>
           <Route path="/newuser">
-            <NewUser />
+            <NewUser usersData={props.usersData}/>
           </Route>
           <Redirect to="/" />
         </Switch>

@@ -11,8 +11,6 @@ import FormLabel from "@material-ui/core/FormLabel";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 
-// import { useEffect, useState } from "react";
-
 const validationSchema = yup.object({
   name: yup
     .string("Enter your name")
@@ -22,29 +20,11 @@ const validationSchema = yup.object({
   email: yup.string("Enter your email").email("Enter a valid email").required(),
   phone: yup.string("Enter your Phone Number").required(),
   website: yup.string("Enter Website").required(),
-
-  //   street: props.user.address.street,
-  //   suite: props.user.address.suite,
-  //   city: props.user.address.city,
-  //   zipcode: props.user.address.zipcode,
-  //   geo: {
-  //     lat: props.user.address.geo.lat,
-  //     lng: props.user.address.geo.lng
-  //   }
-  // },
-  // phone: props.user.phone,
-  // website: props.user.website,
-  // company: {
-  //   name: props.user.company.name,
-  //   catchPhrase: props.user.company.catchPhrase,
-  //   bs: props.user.company.bs
-  // }
 });
 
 const UserForm = (props) => {
   debugger;
   let history = useHistory();
-  // const [userData,setUserData] = useState(props.user);
   let initialValues = {};
   if(props.user && Object.keys(props.user).length>0){
   initialValues = {
@@ -72,7 +52,6 @@ const UserForm = (props) => {
   }
   }else{
     initialValues = {
-      
         id: '',
         name: '',
         username: '',
@@ -105,6 +84,7 @@ const UserForm = (props) => {
       debugger;
       if(props.user && Object.keys(props.user).length>0){
         props.onUserModify(values);
+       
       }else{
         props.onNewUser(values);
       }      
@@ -149,8 +129,6 @@ const UserForm = (props) => {
               label="Suite"
               value={formik.values.address.suite}
               onChange={formik.handleChange}
-              // error={formik.touched.address.suite && Boolean(formik.errors.address.suite)}
-              // helperText={formik.touched.address.suite && formik.errors.address.suite}
             />
             <TextField
               fullWidth
@@ -159,8 +137,6 @@ const UserForm = (props) => {
               label="City"
               value={formik.values.address.city}
               onChange={formik.handleChange}
-              // error={formik.touched.address.city && Boolean(formik.errors.address.city)}
-              // helperText={formik.touched.address.city && formik.errors.address.city}
             />
             <TextField
               fullWidth
@@ -169,8 +145,6 @@ const UserForm = (props) => {
               label="Street"
               value={formik.values.address.street}
               onChange={formik.handleChange}
-              // error={formik.touched.address.street && Boolean(formik.errors.address.street)}
-              // helperText={formik.touched.address.street && formik.errors.address.street}
             />
           </FormGroup>
           <TextField
@@ -204,8 +178,6 @@ const UserForm = (props) => {
             label="Name"
             value={formik.values.company.name}
             onChange={formik.handleChange}
-            // error={formik.touched.company.name && Boolean(formik.errors.company.name)}
-            // helperText={formik.touched.company.name && formik.errors.company.name}
           />
           <TextField
             fullWidth
@@ -214,8 +186,6 @@ const UserForm = (props) => {
             label="Catch Phrase"
             value={formik.values.company.catchPhrase}
             onChange={formik.handleChange}
-            // error={formik.touched.company.catchPhrase && Boolean(formik.errors.company.catchPhrase)}
-            // helperText={formik.touched.company.catchPhrase && formik.errors.company.catchPhrase}
           />
           <Box mt={4} />
           <Button color="primary" variant="contained" fullWidth type="submit">
