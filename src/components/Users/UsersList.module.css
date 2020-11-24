@@ -1,0 +1,8 @@
+.listContainer{
+    padding: 0 10% ;
+}
+@media screen and (min-width:576px) and (max-width: 1199px){
+    .listContainer{
+        padding: 1% 3%;
+    }
+}
